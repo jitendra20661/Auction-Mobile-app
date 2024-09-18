@@ -89,9 +89,8 @@ export function SessionProvider({children}: PropsWithChildren){
                 }),
             });
             const data = await response.json();
-            alert(response.status + " " + data.message+" , id: " + data.user_info.id);
-            const uid = data.user_info.id;
-
+            alert(response.status + " " + data.message);
+           
             setIsLoading(false);
 
             if (!response.ok) {
@@ -99,6 +98,7 @@ export function SessionProvider({children}: PropsWithChildren){
                 return;
             }
 
+            const uid = data.user_info.id;
             const _authData = {
                 id: uid,
                 name: props.username,
@@ -123,7 +123,6 @@ export function SessionProvider({children}: PropsWithChildren){
             // Always set isLoading to false when done
             setIsLoading(false);
         }
-
     }
     const logOut = async () => {
         setIsLoading(true);

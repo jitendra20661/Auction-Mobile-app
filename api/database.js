@@ -74,6 +74,7 @@ app.post('/api/registerUser', async(req, res)=>{
 })
 
 
+
 app.post('/api/loginUser', (req,res)=>{
     // res.json({message: 'hello from Backend'})
     const {username, password} = req.body
@@ -86,7 +87,7 @@ app.post('/api/loginUser', (req,res)=>{
             return res.status(500).json({message:'An unexpected error occurred. Please Try Again Later'});
         }
         if(result.length){
-            console.log(result[0])
+            console.log("login: ",result[0])
             return res.status(200).json({message: `Welcome ${username}`, user_info: result[0]})
         }
         else
@@ -105,8 +106,8 @@ app.post('/api/create-auction', upload.single('rulesFile'), (req,res)=>{
         if (!req.file.path) {
             return res.status(400).json({ message: 'Failed to Upload rulesFile' });
         }
-        console.log(req.body);
-        console.log(req.file);
+        console.log("Create Auction Form fields",req.body);
+        console.log("Create Auction Rules File",req.file);
 
         const rulesFilePath = req.file.path; 
         const {
@@ -119,8 +120,11 @@ app.post('/api/create-auction', upload.single('rulesFile'), (req,res)=>{
             maxTeams,
             maxPlayerPerTeam,
             minBidPrice,
+            // startDateTimeUTC,
 
         } = req.body
+        // console.log("startDateTimeUTC: ",startDateTimeUTC);
+        
 
         // store the filename(path) in the db along with other fields
         const sql = `insert into auctions(manager_id, name, description, rules_file, start_date, start_time, time_per_bid, max_teams, players_per_team, min_bid_price) values(?,?,?,?,?,?,?,?,?,?)`
@@ -140,6 +144,29 @@ app.post('/api/create-auction', upload.single('rulesFile'), (req,res)=>{
     }
 })
 
+app.get('/api/getAuctionsList/:uid', (req, res) => {
+    const uid = req.params.uid;
+
+    // Validate user ID
+    if (!uid) {
+        return res.status(400).json({ message: 'User ID is required.' });
+    }
+
+    // Prepare SQL query
+    const sql = `SELECT id, manager_id, name, description, rules_file, start_date, start_time, time_per_bid, max_teams, players_per_team, min_bid_price FROM auctions WHERE manager_id = ?`;
+
+    // Execute the query and handle asynchronous errors in the callback
+    db.query(sql, [uid], (err, result) => {
+        if (err) {
+            console.log("DB Query Failed: ", err);
+            return res.status(500).json({ message: 'Failed to retrieve auctions. Please try again later.' });
+        }
+
+        // If query is successful, send the result
+        res.send(result);
+        console.log(result)
+    });
+});
 
 
 // Start the server

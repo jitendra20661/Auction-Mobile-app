@@ -1,6 +1,7 @@
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
+import UserTypeScreen from '../screens/UserTypeScreen';
+import Dashboard from '@/screens/Dashboard' 
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { useAuth } from '@/context/AuthCtx';
 import stylecss from '@/screens/style';
@@ -42,7 +43,8 @@ export const AppStack = ()=>{
         }}
         // screenOptions={{headerShown: false}}
         >
-            <Stack.Screen name='Home Screen' component={HomeScreen}/>
+            <Stack.Screen name='Dashboard' component={Dashboard}/>
+            <Stack.Screen name='UserTypeScreen' component={UserTypeScreen}/>
             <Stack.Screen name='Create Auction Form' component={CreateAuctionFormPage}/>
         </Stack.Navigator>
     )

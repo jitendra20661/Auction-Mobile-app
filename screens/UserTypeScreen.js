@@ -7,7 +7,7 @@ import stylecss from "./style";
 
 
 
-export default function HomeScreen(props){
+export default function UserTypeScreen(props){
     const auth = useAuth();
     // const [modalVisibility, setModalVisibility]=useState(false)
 

@@ -8,7 +8,7 @@ import { useState } from 'react';
 import stylecss from "./style";
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 
-const auth_img = require('@/assets/images/auth_img.jpg')
+const auth_img = require('@/assets/images/auth_img.jpeg')
 
 export default function LoginScreen(props){
     // const [loading, isLoading] = useState(false);
@@ -41,14 +41,18 @@ export default function LoginScreen(props){
         //     </View>
         //     {/* <Button title="Sign In" onPress={signIn} /> */}
         // </View>
+        
         <ParallaxScrollView
-        headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+        headerBackgroundColor={{light:"#1D3D47", dark: '#1D3D47'}}
         headerImage={
           <Image
             source={auth_img}
             style={styles.reactLogo}
           />
-        }>
+        } style={{backgroundColor: '#1D3D47'}}>
+
+        
+
         <ThemedView style={styles.titleContainer}>
           <ThemedText type="title">Login</ThemedText>
           {/* <HelloWave /> */}
@@ -86,7 +90,9 @@ export default function LoginScreen(props){
 
         </TouchableOpacity>
 
+
       </ParallaxScrollView>
+
 
     )
 }

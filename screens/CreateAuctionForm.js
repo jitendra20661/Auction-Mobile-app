@@ -133,8 +133,17 @@ export default function CreateAuctionForm(){
             formData.append('manager_id', manager_id)
             formData.append('name', auctionForm.name);
             formData.append('description', auctionForm.description);
+
             formData.append('startDate', `${formatDate(auctionForm.startDate)}`)
             formData.append('startTime', `${formatTime(auctionForm.startTime)}:00`);
+            // const combinedDateTime = new Date(`${formatDate(auctionForm.startDate)}T${formatTime(auctionForm.startTime)}:00`);  
+            // console.log("combineDateTiem: ",combinedDateTime);
+            // const utcDateTime = combinedDateTime.toISOString(); // This will convert to UTC in ISO 8601 format
+            // // Now, you can store this UTC DateTime
+            // formData.append('startDateTimeUTC', utcDateTime);
+            // console.log("startDateTimeUTC: ",combinedDateTime);
+
+
             formData.append('timePerBid', auctionForm.timePerBid);
             formData.append('maxTeams', auctionForm.maxTeams);
             formData.append('maxPlayerPerTeam', auctionForm.maxPlayerPerTeam);

@@ -78,7 +78,7 @@ export default function RegisterScreen(props){
         <View style={[stylecss.container, {justifyContent: 'center'}]}>
             {/* <Text>Register Screen</Text> */}
             <View style={stylecss.stepContainer}>
-                <Text style={[stylecss.title,{color: '#5900B2',}]}>Register</Text>
+                <Text style={[stylecss.title,{color: '#5900B2', fontSize: 50}]}>Register</Text>
             </View>
             <View style={stylecss.stepContainer}>
                 <Text style={{fontWeight:'500'}}>Username</Text>

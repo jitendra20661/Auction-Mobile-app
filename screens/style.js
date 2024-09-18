@@ -37,6 +37,48 @@ const stylecss =  StyleSheet.create({
         color: 'white',
         borderRadius: 6
     },
+    card: {
+        backgroundColor: '#fff',
+        padding: 15,
+        marginVertical: 10,
+        marginHorizontal: 20,
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
+        elevation: 5
+      },
+      avatar: {
+        width: 80,
+        height: 80,
+        // borderRadius: 30,
+        marginRight: 15,   // Space between avatar and details
+
+      },
+      title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 5,
+        color: '#333'
+      },
+      description: {
+        fontSize: 14,
+        color: '#777',
+        marginBottom: 10
+      },
+      cardDetails: {
+        marginVertical: 5
+      },
+      rulesFile: {
+        fontSize: 12,
+        color: '#888',
+        marginTop: 10
+      },
+      timeRemaining: {
+        flexDirection: 'row-reverse',
+        color: 'green'
+      }
 })
 
 export default stylecss;
